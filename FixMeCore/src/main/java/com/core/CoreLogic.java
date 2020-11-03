@@ -158,9 +158,12 @@ public class CoreLogic {
                     break;
                 }
             }
-            System.out.println("you ordered to buy " + Stock + " worth R" + (prices[num] + priceChanges[num]) * Nos);
+
+            int tot = prices[num - 1] + priceChanges[num - 1];
+            tot = tot * Nos;
+            System.out.println("you ordered to buy " + Stock + " worth R" +  tot);
             encodingMsg = "Order|buy|" + Integer.toString(Nos) + "|" + Stock + "|market|"
-                    + Integer.toString((prices[num] + priceChanges[num]));
+                    + Integer.toString((prices[num - 1] + priceChanges[num - 1]));
             // saveTransaction(encodingMsg)
             System.out.println(encodingMsg);
             System.out.println(encoder(encodingMsg));
@@ -205,9 +208,12 @@ public class CoreLogic {
                 }
             }
 
-            System.out.println("you ordered to sell " + Stock + " worth R" + (prices[num] + priceChanges[num]) * Nos);
+            int tot = prices[num - 1] + priceChanges[num - 1];
+            tot = tot * Nos;
+
+            System.out.println("you ordered to sell " + Stock + " worth R" + tot);
             encodingMsg = "Order|sell|" + Integer.toString(Nos) + "|" + Stock + "|market|"
-                    + Integer.toString((prices[num] + priceChanges[num]));
+                    + Integer.toString((prices[num - 1] + priceChanges[num - 1]));
             // saveTransaction(encodingMsg)
             System.out.println(encoder(encodingMsg));
             out.println("tnes!@#");

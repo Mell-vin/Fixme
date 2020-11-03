@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Random;
 
 public class MarkerConn {
     private static final String SERVERHOST = "localhost";
@@ -27,6 +28,7 @@ public class MarkerConn {
     public static void MsgRedact(String msg) {
         String message = msg;
         String[] components = message.split(",");
+        Random rand = new Random();
         final String hash = components[2];
         String[] getID = components[0].split(":");
         final int ID = Integer.parseInt(getID[1]);
@@ -36,12 +38,16 @@ public class MarkerConn {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if (components[1].contains("buy")) {
-            System.out.println(components[0] + "buy was successful");
-        } else if (components[1].contains("sell")) {
-            System.out.println(components[0] + "sell was successful");
+        if (rand.nextInt(3) == 2) {
+            if (components[1].contains("buy")) {
+                System.out.println(components[0] + "buy was successful");
+            } else if (components[1].contains("sell")) {
+                System.out.println(components[0] + "sell was successful");
+            } else {
+                System.out.println("Something isnt right");
+            }
         } else {
-            System.out.println("TF");
+            System.out.println(components[0] + "Transaction rejected " + hash);
         }
     }
 

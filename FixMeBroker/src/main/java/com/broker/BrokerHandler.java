@@ -31,7 +31,7 @@ public class BrokerHandler implements Runnable {
                 + (Integer.parseInt(split[2]) * Integer.parseInt(split[5]));
         // saveStuff(req);
         System.out.println(req);
-        System.out.println("transacting " + req + " for broker " + brokerID + "...");
+        System.out.println("transacting " + req);
         if (this.market != null) {
             this.market.getOut().println("[Broker:" + brokerID + ":]," + req + "," + brokerHash);
         }
